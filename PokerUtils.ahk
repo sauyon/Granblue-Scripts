@@ -1,7 +1,4 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-
-global count := 0
+﻿global count := 0
 
 Suit(card) {
 	return SubStr(card, 2)
@@ -67,7 +64,8 @@ PickCards(byref cards) {
 	If (matchingCount > 1) {
 		for i, card in cards {
 			for j, sp in space {
-				if (card == sp) ret[j] := true
+				if (card == sp) 
+					ret[j] := true
 			}
 		}
 	} Else If (suit0Count == 5 || straight == 5) {
@@ -76,11 +74,13 @@ PickCards(byref cards) {
 		return ret
 	} Else If (suit0Count == 4) {
 		for i, card in oldcards {
-			if (Suit(card) == suit0) ret[i] := true
+			if (Suit(card) == suit0) 
+				ret[i] := true
 		}
 	} Else If (suit1Count == 4) {
 		for i, card in oldcards {
-			if (Suit(card) == suit1) ret[i] := true
+			if (Suit(card) == suit1) 
+				ret[i] := true
 		}
 	} Else If (straight == 4) {
 		curr := Val(cards[straightStart])
@@ -96,6 +96,6 @@ PickCards(byref cards) {
 	} Else If (matchingCount == 1) {
 		return Select(matchingCards, oldcards)
 	}
-	
+	updateLog(" return: " . ret[1])
 	return ret
 }

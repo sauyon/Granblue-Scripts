@@ -262,6 +262,15 @@ global keepCard4_X2 := 430
 global keepCard5_X1 := 435
 global keepCard5_X2 := 515
 
+global card_Y := 430
+global card1_X := 130
+global card2_X := 225
+global card3_X := 310
+global card4_X := 390
+global card5_X := 475
+
+
+
 
 ;Time intervals
 global default_button_delay := 500
@@ -329,7 +338,7 @@ ImageSearchWrapperPoker(byref searchResultX, byref searchResultY, imageFileName,
 	}
 	else if ErrorLevel = 1
 	{
-		updateLog(imageFileName . " was not found.")
+		;updateLog(imageFileName . " was not found.")
 		return false
 	}
 	else 

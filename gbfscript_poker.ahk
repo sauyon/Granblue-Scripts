@@ -1,5 +1,5 @@
 #Include gbfscriptConfigUtilities.ahk
-;#Include PokerUtils.ahk
+#Include PokerUtils.ahk
 
 SetTimer, ForceExitApp, 5000000 ; 1h20 minutes
 
@@ -85,13 +85,13 @@ If (sURL != "")
 		searchResult := MultiImageSearchPoker(coordX, coordY, determinePokerState, 0, 0, gbf_winWidth, gbf_winHeight)
 
 		
-		if InStr(searchResult, deal_button)
+		if (InStr(searchResult, deal_button))
 		{
 			updateLog("Deal button found, clicking")
 			RandomClick(coordX, coordY, clickVariance) 
 			continue
 		}
-		else if InStr(searchResult, ok_button)
+		else if (InStr(searchResult, ok_button))
 		{
 			updateLog("OK button found")
 			
@@ -102,9 +102,39 @@ If (sURL != "")
 			updateLog("cardsFound 4: " . cardsFound[4])
 			updateLog("cardsFound 5: " . cardsFound[5])
 			
+			resultArray := PickCards(cardsFound)
+			updateLog("result 1: " . resultArray[1])
+			if (resultArray[1])
+			{
+				RandomClick(card1_X, card_Y, clickVariance)
+				Sleep, % short_interval
+			}
+			updateLog("result 2: " . resultArray[2])
+			if (resultArray[2])
+			{
+				RandomClick(card2_X, card_Y, clickVariance)
+				Sleep, % short_interval
+			}
+			updateLog("result 3: " . resultArray[3])
+			if (resultArray[3])
+			{
+				RandomClick(card3_X, card_Y, clickVariance)
+				Sleep, % short_interval
+			}
+			updateLog("result 4: " . resultArray[4])
+			if (resultArray[4])
+			{
+				RandomClick(card4_X, card_Y, clickVariance)
+				Sleep, % short_interval
+			}
+			updateLog("result 5: " . resultArray[5])
+			if (resultArray[5])
+			{
+				RandomClick(card5_X, card_Y, clickVariance)
+				Sleep, % short_interval
+			}
 			
-			
-			;RandomClick(coordX, coordY, clickVariance) 
+			RandomClick(coordX, coordY, clickVariance) 
 			continue
 		}
 		else if (InStr(searchResult, no_button) or InStr(searchResult, yes_button))
@@ -118,7 +148,7 @@ If (sURL != "")
 			updateLog("High/Low button found")
 			
 			;
-			;TODO search all cards
+			;TODO search card
 			;
 			
 			RandomClick(poker_button_right_X, poker_button_Y, clickVariance) 
