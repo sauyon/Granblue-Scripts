@@ -54,7 +54,7 @@ PickCards(byref cards) {
 				}
 			}
 		} Else {
-			suit0 := Suit(card)
+			suit0 := Suit(card, 2)
 			suit0Count := 1
 			consecutive := 1
 			straight := 1

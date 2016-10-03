@@ -95,6 +95,11 @@ If (sURL != "")
 		{
 			updateLog("OK button found")
 			
+			;TODO search all cards
+			;
+			;TODO keep cards logic
+			;
+			
 			cardsFound := SearchAllCards()
 			updateLog("cardsFound 1: " . cardsFound[1])
 			updateLog("cardsFound 2: " . cardsFound[2])

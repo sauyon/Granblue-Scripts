@@ -177,8 +177,90 @@ global low_button := "low_button.png"
 global no_button := "no_button.png"
 global yes_button := "yes_button.png"
 
+global 02c := "2c.png"
+global 02d := "2d.png"
+global 02h := "2h.png"
+global 02s := "2s.png"
+
+global 03c := "3c.png"
+global 03d := "3d.png"
+global 03h := "3h.png"
+global 03s := "3s.png"
+
+global 04c := "4c.png"
+global 04d := "4d.png"
+global 04h := "4h.png"
+global 04s := "4s.png"
+
+global 05c := "5c.png"
+global 05d := "5d.png"
+global 05h := "5h.png"
+global 05s := "5s.png"
+
+global 06c := "6c.png"
+global 06d := "6d.png"
+global 06h := "6h.png"
+global 06s := "6s.png"
+
+global 07c := "7c.png"
+global 07d := "7d.png"
+global 07h := "7h.png"
+global 07s := "7s.png"
+
+global 08c := "8c.png"
+global 08d := "8d.png"
+global 08h := "8h.png"
+global 08s := "8s.png"
+
+global 09c := "9c.png"
+global 09d := "9d.png"
+global 09h := "9h.png"
+global 09s := "9s.png"
+
+global 10c := "10c.png"
+global 10d := "10d.png"
+global 10h := "10h.png"
+global 10s := "10s.png"
+
+global 11c := "11c.png"
+global 11d := "11d.png"
+global 11h := "11h.png"
+global 11s := "11s.png"
+
+global 12c := "12c.png"
+global 12d := "12d.png"
+global 12h := "12h.png"
+global 12s := "12s.png"
+
+global 13c := "13c.png"
+global 13d := "13d.png"
+global 13h := "13h.png"
+global 13s := "13s.png"
+
+global 14c := "14c.png"
+global 14d := "14d.png"
+global 14h := "14h.png"
+global 14s := "14s.png"
 
 global Xx := "Xx.png"
+
+global keepCard_Y1 := 375
+global keepCard_Y2 := 485
+
+global keepCard1_X1 := 100
+global keepCard1_X2 := 180
+
+global keepCard2_X1 := 185
+global keepCard2_X2 := 260
+
+global keepCard3_X1 := 265
+global keepCard3_X2 := 345
+
+global keepCard4_X1 := 350
+global keepCard4_X2 := 430
+
+global keepCard5_X1 := 435
+global keepCard5_X2 := 515
 
 
 ;Time intervals
@@ -200,6 +282,7 @@ global clickVarianceSmall := 6
 global waitImageTimeoutMax := 10
 global waitCoopHomeMax := 7
 global waitResultMax := 5
+global cardSearchLoops := 10
 
 
 
@@ -231,13 +314,13 @@ ImageSearchWrapper(byref searchResultX, byref searchResultY, imageFileName)
 	}
 }
 
-ImageSearchWrapperPoker(byref searchResultX, byref searchResultY, imageFileName)
+ImageSearchWrapperPoker(byref searchResultX, byref searchResultY, imageFileName, X1, Y1, X2, Y2)
 {
 	searchResultX := 0
 	searchResultY := 0
 	
 	imagePath = %poker_image_path%%imageFileName%
-	ImageSearch, searchResultX, searchResultY, 0, 0, GBF_winWidth, GBF_winHeight, *20 %imagePath%
+	ImageSearch, searchResultX, searchResultY, X1, Y1, X2, Y2, *20 %imagePath%
 	
 	if ErrorLevel = 2
 	{
@@ -274,7 +357,7 @@ MultiImageSearch(byref searchResultX, byref searchResultY, imageFileArray)
 	return "Not Found"
 }
 
-MultiImageSearchPoker(byref searchResultX, byref searchResultY, imageFileArray)
+MultiImageSearchPoker(byref searchResultX, byref searchResultY, imageFileArray, X1, Y1, X2, Y2)
 {
 	searchResultX := 0
 	searchResultY := 0
@@ -282,7 +365,7 @@ MultiImageSearchPoker(byref searchResultX, byref searchResultY, imageFileArray)
 	for index, imageFileName in imageFileArray
 	{
 		;updateLog("Searching " . imageFileName)
-		if ImageSearchWrapperPoker(singleSearchX, singleSearchY, imageFileName)
+		if ImageSearchWrapperPoker(singleSearchX, singleSearchY, imageFileName, X1, Y1, X2, Y2)
 		{
 			searchResultX := singleSearchX
 			searchResultY := singleSearchY
@@ -436,6 +519,18 @@ ClickSkill(character, skillNum)
 	Sleep, % default_button_delay
 }
 
+FindElementInArray(ByRef foundIndex, inputArray, findThis)
+{
+	for index, element in inputArray
+	{
+		if InStr(element, findThis)
+		{
+			foundIndex := index
+			return foundIndex
+		}
+	}
+	return null
+}
 
 ;----------------------------------------------
 ;Browser URL Tools
