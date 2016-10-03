@@ -81,7 +81,7 @@ If (sURL != "")
 	else if InStr(sURL, searchPoker)
 	{
 		updateLog("-----In Poker-----")
-		determinePokerState := [deal_button, ok_button, start_button, high_button, low_button, no_button, yes_button, Xx]
+		determinePokerState := [deal_button, ok_button, start_button, high_button, low_button, no_button, yes_button]
 		searchResult := MultiImageSearchPoker(coordX, coordY, determinePokerState, 0, 0, gbf_winWidth, gbf_winHeight)
 
 		
@@ -101,6 +101,9 @@ If (sURL != "")
 			updateLog("cardsFound 3: " . cardsFound[3])
 			updateLog("cardsFound 4: " . cardsFound[4])
 			updateLog("cardsFound 5: " . cardsFound[5])
+			
+			
+			
 			;RandomClick(coordX, coordY, clickVariance) 
 			continue
 		}
@@ -139,9 +142,74 @@ SearchAllCards()
 {
 	cardsOnScreen := Object()
 	allCards := Object()
-
-	allCards := [02c, 02d, 02h, 02s, 06s, 08c]
-
+	
+	allCards.Insert(02c)
+	allCards.Insert(02d)
+	allCards.Insert(02h)
+	allCards.Insert(02s)
+	
+	allCards.Insert(03c)
+	allCards.Insert(03d)
+	allCards.Insert(03h)
+	allCards.Insert(03s)
+	
+	allCards.Insert(04c)
+	allCards.Insert(04d)
+	allCards.Insert(04h)
+	allCards.Insert(04s)
+	
+	allCards.Insert(05c)
+	allCards.Insert(05d)
+	allCards.Insert(05h)
+	allCards.Insert(05s)
+	
+	allCards.Insert(06c)
+	allCards.Insert(06d)
+	allCards.Insert(06h)
+	allCards.Insert(06s)
+	
+	allCards.Insert(07c)
+	allCards.Insert(07d)
+	allCards.Insert(07h)
+	allCards.Insert(07s)
+	
+	allCards.Insert(08c)
+	allCards.Insert(08d)
+	allCards.Insert(08h)
+	allCards.Insert(08s)
+	
+	allCards.Insert(09c)
+	allCards.Insert(09d)
+	allCards.Insert(09h)
+	allCards.Insert(09s)
+	
+	allCards.Insert(10c)
+	allCards.Insert(10d)
+	allCards.Insert(10h)
+	allCards.Insert(10s)
+	
+	allCards.Insert(11c)
+	allCards.Insert(11d)
+	allCards.Insert(11h)
+	allCards.Insert(11s)
+	
+	allCards.Insert(12c)
+	allCards.Insert(12d)
+	allCards.Insert(12h)
+	allCards.Insert(12s)
+	
+	allCards.Insert(13c)
+	allCards.Insert(13d)
+	allCards.Insert(13h)
+	allCards.Insert(13s)
+	
+	allCards.Insert(14c)
+	allCards.Insert(14d)
+	allCards.Insert(14h)
+	allCards.Insert(14s)
+	
+	allCards.Insert(00x)
+	
 	;Searching Card Location 1
 	searchResult := MultiImageSearchPoker(coordX, coordY, allCards, keepCard1_X1, keepCard_Y1, keepCard1_X2, keepCard_Y2)
 	for index, card in allCards
